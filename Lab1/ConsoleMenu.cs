@@ -34,49 +34,6 @@ namespace Lab1
                 "21 - RUN ALL\n\n\n\n";
             Console.WriteLine(s);
         }
-        public static void MenuRunAll()
-        {
-            LibraryService LibraryDAL = new LibraryService();
-            ConsoleShow.ShowAllBooks(LibraryDAL.SelectAllBooks());
-            Console.WriteLine();
-            ConsoleShow.ShowAllBooksNames(LibraryDAL.SelectAllBookNames());
-            Console.WriteLine();
-            ConsoleShow.ShowAllStudentClients(LibraryDAL.SelectAllStudentClients());
-            Console.WriteLine();
-            ConsoleShow.ShowAllClientsByBook(LibraryDAL.GetAllClientsByBook());
-            Console.WriteLine();
-            ConsoleShow.ShowAllBooksByClient(LibraryDAL.GetAllBooksByClient());
-            Console.WriteLine();
-            ConsoleShow.ShowFullAmountOfBook(LibraryDAL.GetFullAmountOfBook());
-            Console.WriteLine();
-            ConsoleShow.ShowBooksByGenres(LibraryDAL.GetBooksByGenres());
-            Console.WriteLine();
-            ConsoleShow.ShowBooksWithSpecificAmount(LibraryDAL.GetBooksWithSpecificAmount(3));
-            Console.WriteLine();
-            ConsoleShow.ShowBooksOnHand(LibraryDAL.GetBooksOnHand());
-            Console.WriteLine();
-            ConsoleShow.ShowSortedOldestTakenBooks(LibraryDAL.GetSortedOldestTakenBooks());
-            Console.WriteLine();
-            ConsoleShow.ShowFullRentProfit(LibraryDAL.GetFullRentProfit());
-            Console.WriteLine();
-            ConsoleShow.ShowOverdueBooks(LibraryDAL.GetOverdueBooks());
-            Console.WriteLine();
-            ConsoleShow.ShowPercentOfStudentClients(LibraryDAL.GetPercentOfStudentClients());
-            Console.WriteLine();
-            ConsoleShow.ShowAllBooksStartedWithE(LibraryDAL.GetAllBooksStartedWithE());
-            Console.WriteLine();
-            ConsoleShow.ShowBooksByAuthors(LibraryDAL.GetBooksByAuthors());
-            Console.WriteLine();
-
-            ConsoleShow.ShowActiveSubscriptions(LibraryDAL.GetActiveSubscriptions());
-            Console.WriteLine();
-            ConsoleShow.ShowClientsWithOutRent(LibraryDAL.GetClientsWithOutRent());
-            Console.WriteLine();
-            ConsoleShow.ShowBooksWithHihgerRentPrice(LibraryDAL.GetBooksWithHihgerRentPrice());
-            Console.WriteLine();
-            ConsoleShow.ShowAverageCollateralValue(LibraryDAL.GetAverageCollateralValue());
-            Console.WriteLine();
-            ConsoleShow.ShowClientsWithLuckyNumber(LibraryDAL.GetClientsWithLuckyNumber());
-        }
+        
     }
 }

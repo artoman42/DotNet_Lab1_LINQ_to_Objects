@@ -11,7 +11,8 @@ namespace Lab1
         {
             IServiceCollection serviceDescriptors = new ServiceCollection();
             serviceDescriptors.AddServices();
-            
+            IServiceProvider serviceProvider = serviceDescriptors.BuildServiceProvider();
+            serviceProvider.GetService<IRunner>().Run();
         }
     }
 }

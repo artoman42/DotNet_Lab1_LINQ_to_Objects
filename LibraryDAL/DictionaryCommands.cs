@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using LibraryDAL;
 using Library.enums;
-namespace Lab1
+namespace LibraryDAL
 {
     public class DictionaryCommands : IDictionaryCommands
     {

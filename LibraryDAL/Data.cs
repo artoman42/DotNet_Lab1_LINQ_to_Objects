@@ -5,7 +5,7 @@ using Library.enums;
 
 namespace LibraryDAL
 {
-    public class Data : IData
+    public class Data 
     {
         public static List<Book> Books = new ()
         {

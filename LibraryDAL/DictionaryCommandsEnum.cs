@@ -29,6 +29,5 @@ namespace LibraryDAL
         ShowBooksWithHigherPrice,
         ShowMaxCollateralValue,
         ShowClientFirstHaveLuckyNumber
-
     }
 }

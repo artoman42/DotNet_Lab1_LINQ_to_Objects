@@ -19,3 +19,5 @@ D:\KPI\.NET\Lab1\Lab1\obj\Debug\net5.0\Lab1.dll
 D:\KPI\.NET\Lab1\Lab1\obj\Debug\net5.0\ref\Lab1.dll
 D:\KPI\.NET\Lab1\Lab1\obj\Debug\net5.0\Lab1.pdb
 D:\KPI\.NET\Lab1\Lab1\obj\Debug\net5.0\Lab1.genruntimeconfig.cache
+D:\KPI\.NET\Lab1\Lab1\bin\Debug\net5.0\Microsoft.Extensions.DependencyInjection.dll
+D:\KPI\.NET\Lab1\Lab1\bin\Debug\net5.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
