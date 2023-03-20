@@ -1,0 +1,15 @@
+D:\KPI\.NET\Lab1\LibraryDAL\bin\Debug\net5.0\LibraryDAL.deps.json
+D:\KPI\.NET\Lab1\LibraryDAL\bin\Debug\net5.0\LibraryDAL.dll
+D:\KPI\.NET\Lab1\LibraryDAL\bin\Debug\net5.0\ref\LibraryDAL.dll
+D:\KPI\.NET\Lab1\LibraryDAL\bin\Debug\net5.0\LibraryDAL.pdb
+D:\KPI\.NET\Lab1\LibraryDAL\bin\Debug\net5.0\Library.dll
+D:\KPI\.NET\Lab1\LibraryDAL\bin\Debug\net5.0\Library.pdb
+D:\KPI\.NET\Lab1\LibraryDAL\obj\Debug\net5.0\LibraryDAL.csproj.AssemblyReference.cache
+D:\KPI\.NET\Lab1\LibraryDAL\obj\Debug\net5.0\LibraryDAL.GeneratedMSBuildEditorConfig.editorconfig
+D:\KPI\.NET\Lab1\LibraryDAL\obj\Debug\net5.0\LibraryDAL.AssemblyInfoInputs.cache
+D:\KPI\.NET\Lab1\LibraryDAL\obj\Debug\net5.0\LibraryDAL.AssemblyInfo.cs
+D:\KPI\.NET\Lab1\LibraryDAL\obj\Debug\net5.0\LibraryDAL.csproj.CoreCompileInputs.cache
+D:\KPI\.NET\Lab1\LibraryDAL\obj\Debug\net5.0\LibraryDAL.csproj.CopyComplete
+D:\KPI\.NET\Lab1\LibraryDAL\obj\Debug\net5.0\LibraryDAL.dll
+D:\KPI\.NET\Lab1\LibraryDAL\obj\Debug\net5.0\ref\LibraryDAL.dll
+D:\KPI\.NET\Lab1\LibraryDAL\obj\Debug\net5.0\LibraryDAL.pdb

@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32413.511
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lab1", "Lab1.csproj", "{52519C24-2166-49DE-851D-5B7E430E3A97}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Library", "..\Library\Library.csproj", "{B2FB5ECC-FEA4-4BFB-82AC-148A9D5F3111}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibraryDAL", "..\LibraryDAL\LibraryDAL.csproj", "{28F283FE-C517-4A87-9E9A-5B7B32DF91DB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{52519C24-2166-49DE-851D-5B7E430E3A97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{52519C24-2166-49DE-851D-5B7E430E3A97}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{52519C24-2166-49DE-851D-5B7E430E3A97}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{52519C24-2166-49DE-851D-5B7E430E3A97}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B2FB5ECC-FEA4-4BFB-82AC-148A9D5F3111}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B2FB5ECC-FEA4-4BFB-82AC-148A9D5F3111}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B2FB5ECC-FEA4-4BFB-82AC-148A9D5F3111}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B2FB5ECC-FEA4-4BFB-82AC-148A9D5F3111}.Release|Any CPU.Build.0 = Release|Any CPU
+		{28F283FE-C517-4A87-9E9A-5B7B32DF91DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28F283FE-C517-4A87-9E9A-5B7B32DF91DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28F283FE-C517-4A87-9E9A-5B7B32DF91DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28F283FE-C517-4A87-9E9A-5B7B32DF91DB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8723B4AF-0364-416F-AFBE-C27D1CCF20FE}
+	EndGlobalSection
+EndGlobal
