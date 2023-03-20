@@ -8,8 +8,8 @@ namespace Library
 {
     public class RentCost
     {
-        public double CollateralValue { get; set; }
-        public double RentalPrice { get; set; }// має калькулювати, decimal!!!! 
+        public decimal CollateralValue { get; set; }
+        public decimal RentalPrice { get; set; }// має калькулювати, decimal!!!! 
 
         public override string ToString()
         {

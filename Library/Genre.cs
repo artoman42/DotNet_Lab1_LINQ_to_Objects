@@ -3,15 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Library.enums;
 
 namespace Library
 {
-    public interface IBookRent
+    public class Genre:Object<Genre>
     {
-       IBook Book { get; set; } // 
-       IClient Client { get; set; }
-       IRentPeriod RentPeriod { get; set; }
-
-
+        public Genres pGenre { get; set; }
     }
 }

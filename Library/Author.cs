@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Library
 {
-    public interface IRentPeriod
+    public class Author:Object<Author>
     {
-        DateTime DateOfIssue { get; set; }
-        DateTime ExpectedReturnDate { get; set; }
+        public string Name { get; set; }
+
     }
 }

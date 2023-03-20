@@ -169,7 +169,7 @@ namespace Lab1
                 Console.WriteLine("No result!");
             }
         }
-        public static void ShowFullRentProfit(double profit)
+        public static void ShowFullRentProfit(decimal profit)
         {
             if (profit != null)
             {
@@ -295,7 +295,7 @@ namespace Lab1
                 Console.WriteLine("No result!");
             }
         }
-        public static void ShowAverageCollateralValue(double avg)
+        public static void ShowAverageCollateralValue(decimal avg)
         {
             if (avg != null)
             {

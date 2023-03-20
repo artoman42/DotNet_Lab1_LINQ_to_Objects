@@ -17,7 +17,7 @@ namespace LibraryDAL
                 Amount = 4,
                 RentCost = new RentCost()
                 {
-                    CollateralValue = 54.54,
+                    CollateralValue = 54.54M,
                     RentalPrice = 23.44
                 }
             },

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Library.enums;
 namespace Library
 {
-    public class Client: Object, IClient
+    public class Client: Object<Client> 
     {
         
         public string FullName { get; set; }

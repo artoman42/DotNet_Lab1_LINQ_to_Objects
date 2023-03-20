@@ -127,7 +127,7 @@ namespace LibraryDAL
             return bookIdAndClients;
         }
         
-        public double GetFullRentProfit()
+        public decimal GetFullRentProfit()
         {
             var res = from x in Data.Books
                       join y in Data.Subscriptions on x.Id equals y.BookId
@@ -184,12 +184,12 @@ namespace LibraryDAL
         public IEnumerable<Book> GetBooksWithHihgerRentPrice()
         {
             return from b in Data.Books
-                   where b.RentCost.RentalPrice >= 47.55
+                   where b.RentCost.RentalPrice >= 47.55M
                    select b;
 
         }
 
-        public double GetAverageCollateralValue()
+        public decimal GetAverageCollateralValue()
         {
             return Data.Books.Average(b => b.RentCost.CollateralValue);
         }

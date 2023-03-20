@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace Library
 {
-    public interface IRentCost
+    public class Co_Author:Object<Co_Author>
     {
-        double CollateralValue { get; set; } 
-        double RentalPrice { get; set; }
-
+        public Guid BookId { get; set; }
+        public Guid AuthorId { get; set; }
     }
 }
