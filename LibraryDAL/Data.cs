@@ -2,154 +2,99 @@
 using System.Collections.Generic;
 using Library;
 using Library.enums;
+
 namespace LibraryDAL
 {
-    public class Data
+    public class Data : IData
     {
-        public static List<Book> Books = new()
+        public static List<Book> Books = new ()
         {
             new Book()
             {
                 Name = "Енеїда",
-                Author = "Iван Котляревський",
-                Genre = Genres.Poem,
-
                 Amount = 4,
-                RentCost = new RentCost()
-                {
-                    CollateralValue = 54.54M,
-                    RentalPrice = 23.44
-                }
+                GenreId = Genres[2].Id,
+                CollateralValue = 54.54M,
+
             },
             new Book()
             {
                 Name = "Вечори на хуторi бiля Диканьки",
-                Author = "Микола Гоголь",
-                Genre = Genres.Novelette,
-
+                GenreId = Genres[1].Id,
                 Amount = 2,
-                RentCost = new RentCost()
-                {
-                    CollateralValue = 72.54,
-                    RentalPrice = 43.14
-                }
+                CollateralValue = 72.54M,
+
             },
             new Book()
             {
                 Name = "Кобзар",
-                Author = "Тарас Шевченко",
-                Genre = Genres.Poetry,
-
+                GenreId = Genres[3].Id,
                 Amount = 7,
-                RentCost = new RentCost()
-                {
-                    CollateralValue = 59.254,
-                    RentalPrice = 33.14
-                }
+                CollateralValue = 59.254M,
             },
             new Book()
             {
                 Name = "Лiсова пiсня",
-                Author = "Леся Українка",
-                Genre = Genres.Drama,
-
+                GenreId = Genres[0].Id,
                 Amount = 9,
-                RentCost = new RentCost()
-                {
-                    CollateralValue = 59.254,
-                    RentalPrice = 53.14
-                }
+                CollateralValue = 59.254M,
             },
             new Book()
             {
                 Name = "Ворошиловоград",
-                Author = "Сергій Жадан",
-                Genre = Genres.Novelette,
-
+                GenreId = Genres[1].Id,
                 Amount = 2,
-                RentCost = new RentCost()
-                {
-                    CollateralValue = 89.254,
-                    RentalPrice = 60.14
-                }
+                CollateralValue = 89.254M,
             },
             new Book()
             {
                 Name = "Танго Смерті",
-                Author = "Юрій Винничук",
-                Genre = Genres.Novelette,
-
+                GenreId = Genres[1].Id,
                 Amount = 4,
-                RentCost = new RentCost()
-                {
-                    CollateralValue = 49.254,
-                    RentalPrice = 20.14
-                }
+                CollateralValue = 49.254M,
             },
             new Book()
             {
                 Name = "Маруся Чурай",
-                Author = "Ліна Костенко",
-                Genre = Genres.Poetry,
-
+                GenreId = Genres[3].Id,
                 Amount = 4,
-                RentCost = new RentCost()
-                {
-                    CollateralValue = 70.254,
-                    RentalPrice = 49.14
-                }
+                CollateralValue = 70.254M,
             },
             new Book()
             {
                 Name = "Амадока",
-                Author = "Софія Андрухович",
-                Genre = Genres.Novelette,
-
+                GenreId = Genres[1].Id,
                 Amount = 6,
-                RentCost = new RentCost()
-                {
-                    CollateralValue = 80.166,
-                    RentalPrice = 39.124
-                }
+                CollateralValue = 80.166M,
             },
             new Book()
             {
                 Name = "Тореодори з Васюківки",
-                Author = "Всеволод Нестайко",
-                Genre = Genres.Novelette,
+                GenreId = Genres[2].Id,
 
                 Amount = 12,
-                RentCost = new RentCost()
-                {
-                    CollateralValue = 30.166,
-                    RentalPrice = 19.024
-                }
+                CollateralValue = 30.166M,
             },
             new Book()
             {
                 Name = "Камінний Хрест",
-                Author = "Василь Стефанник",
-                Genre = Genres.Novelette,
-
+                GenreId = Genres[2].Id,
                 Amount = 8,
-                RentCost = new RentCost()
-                {
-                    CollateralValue = 99.166,
-                    RentalPrice = 48.334
-                }
+                CollateralValue = 99.166M,
             },
             new Book()
             {
                 Name = "Iнтернат",
-                Author = "Сергій Жадан",
-                Genre = Genres.Novelette,
-
+                GenreId = Genres[1].Id,
                 Amount = 5,
-                RentCost = new RentCost()
-                {
-                    CollateralValue =66.354,
-                    RentalPrice = 39.14
-                }
+                CollateralValue = 66.354M,
+            },
+            new Book()
+            {
+                Name = "То є Львiв. Колекцiя мiських iсторiй",
+                GenreId = Genres[1].Id,
+                Amount = 5,
+                CollateralValue = 66.354M,
             }
         };
         public static List<Client> Clients = new()
@@ -225,86 +170,205 @@ namespace LibraryDAL
             {
                 BookId = Books[0].Id,
                 ClientId = Clients[0].Id,
-                IsActive = true,
-                RentPeriod = new RentPeriod()
-                {
-                    
-                    DateOfIssue = DateTime.Now,
-                    ExpectedReturnDate = DateTime.Now.AddMonths(2)
-                }
+                DateOfIssue = DateTime.Now,
+                ExpectedReturnDate = DateTime.Now.AddMonths(2)
             },
             new Subscription()
             {
                 BookId = Books[1].Id,
                 ClientId = Clients[2].Id,
-                IsActive = true,
-                RentPeriod = new RentPeriod()
-                {
-
-                    DateOfIssue = DateTime.Now.AddMonths(-1),
-                    ExpectedReturnDate = DateTime.Now.AddMonths(2)
-                }
+                DateOfIssue = DateTime.Now.AddMonths(-1),
+                ExpectedReturnDate = DateTime.Now.AddMonths(2)
             },
             new Subscription()
             {
                 BookId = Books[2].Id,
                 ClientId = Clients[1].Id,
-                IsActive = true,
-                RentPeriod = new RentPeriod()
-                {
-
-                    DateOfIssue = DateTime.Now.AddMonths(-3),
-                    ExpectedReturnDate = DateTime.Now.AddMonths(4)
-                }
+                DateOfIssue = DateTime.Now.AddMonths(-3),
+                ExpectedReturnDate = DateTime.Now.AddMonths(4)
             },
             new Subscription()
             {
                 BookId = Books[1].Id,
                 ClientId = Clients[1].Id,
-                IsActive = true,
-                RentPeriod = new RentPeriod()
-                {
-
-                    DateOfIssue = DateTime.Now.AddMonths(-3),
-                    ExpectedReturnDate = DateTime.Now.AddMonths(4)
-                }
+                DateOfIssue = DateTime.Now.AddMonths(-3),
+                ExpectedReturnDate = DateTime.Now.AddMonths(4)
             },
             new Subscription()
             {
                 BookId = Books[2].Id,
                 ClientId = Clients[3].Id,
-                IsActive = true,
-                RentPeriod = new RentPeriod()
-                {
-
-                    DateOfIssue = DateTime.Now.AddMonths(-3),
-                    ExpectedReturnDate = DateTime.Now.AddMonths(-1)
-                }
+                DateOfIssue = DateTime.Now.AddMonths(-3),
+                ExpectedReturnDate = DateTime.Now.AddMonths(-1)
             },
             new Subscription()
             {
                 BookId = Books[4].Id,
                 ClientId = Clients[6].Id,
-                IsActive = true,
-                RentPeriod = new RentPeriod()
-                {
 
-                    DateOfIssue = DateTime.Now.AddMonths(-3),
-                    ExpectedReturnDate = DateTime.Now.AddMonths(2)
-                }
+                DateOfIssue = DateTime.Now.AddMonths(-3),
+                ExpectedReturnDate = DateTime.Now.AddMonths(2)
             },
             new Subscription()
             {
                 BookId = Books[7].Id,
                 ClientId = Clients[2].Id,
-                IsActive = true,
-                RentPeriod = new RentPeriod()
-                {
-
-                    DateOfIssue = DateTime.Now.AddMonths(-1),
-                    ExpectedReturnDate = DateTime.Now.AddMonths(5)
-                }
+                DateOfIssue = DateTime.Now.AddMonths(-1),
+                ExpectedReturnDate = DateTime.Now.AddMonths(5)
             }
+        };
+        public static List<Genre> Genres = new()
+        {
+            new Genre()
+            {
+                pGenre = Library.enums.Genres.Drama
+            },
+            new Genre()
+            {
+                pGenre = Library.enums.Genres.Novelette
+            },
+            new Genre()
+            {
+                pGenre = Library.enums.Genres.Poem
+            },
+            new Genre()
+            {
+                pGenre = Library.enums.Genres.Poetry
+            }
+        };
+        public static List<Author> Authors = new()
+        {
+            new Author
+            {
+                Name = "Iван Котляревський"
+            },
+            new Author
+            {
+                Name = "Микола Гоголь"
+            },
+            new Author
+            {
+                Name = "Тарас Шевченко"
+            },
+            new Author
+            {
+                Name = "Леся Українка"
+            },
+            new Author
+            {
+                Name = "Сергій Жадан"
+            },
+            new Author
+            {
+                Name = "Юрій Винничук"
+            },
+            new Author
+            {
+                Name = "Ліна Костенко"
+            },
+            new Author
+            {
+                Name = "Софія Андрухович"
+            },
+            new Author
+            {
+                Name = "Всеволод Нестайко"
+            },
+            new Author
+            {
+                Name = "Василь Стефанник"
+            },
+            new Author
+            {
+                Name = "Мар’яна Савка"
+            },
+            new Author
+            {
+                Name = "Юрій Андрухович"
+            },
+            new Author
+            {
+                Name = "Костянтин Москалець"
+            }
+
+        };
+        public static List<Co_Author> Co_Authors = new()
+        {
+            new Co_Author
+            {
+                AuthorId = Authors[0].Id,
+                BookId = Books[0].Id
+            },
+            new Co_Author
+            {
+                AuthorId = Authors[1].Id,
+                BookId = Books[1].Id
+            },
+            new Co_Author
+            {
+                AuthorId = Authors[2].Id,
+                BookId = Books[2].Id
+            },
+            new Co_Author
+            {
+                AuthorId = Authors[3].Id,
+                BookId = Books[3].Id
+            },
+            new Co_Author
+            {
+                AuthorId = Authors[4].Id,
+                BookId = Books[4].Id
+            },
+            new Co_Author
+            {
+                AuthorId = Authors[5].Id,
+                BookId = Books[5].Id
+            },
+            new Co_Author
+            {
+                AuthorId = Authors[6].Id,
+                BookId = Books[6].Id
+            },
+            new Co_Author
+            {
+                AuthorId = Authors[6].Id,
+                BookId = Books[6].Id
+            },
+            new Co_Author
+            {
+                AuthorId = Authors[7].Id,
+                BookId = Books[7].Id
+            },
+            new Co_Author
+            {
+                AuthorId = Authors[8].Id,
+                BookId = Books[8].Id
+            },
+            new Co_Author
+            {
+                AuthorId = Authors[9].Id,
+                BookId = Books[9].Id
+            },
+            new Co_Author
+            {
+                AuthorId = Authors[10].Id,
+                BookId = Books[10].Id
+            },
+            new Co_Author
+            {
+                AuthorId = Authors[11].Id,
+                BookId = Books[10].Id
+            },
+            new Co_Author
+            {
+                AuthorId = Authors[12].Id,
+                BookId = Books[10].Id
+            },
+            new Co_Author
+            {
+                AuthorId = Authors[13].Id,
+                BookId = Books[10].Id
+            },
         };
     }
 }

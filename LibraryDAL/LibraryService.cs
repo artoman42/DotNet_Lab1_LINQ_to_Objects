@@ -5,48 +5,50 @@ using System.Text;
 using System.Threading.Tasks;
 using Library;
 using Library.enums;
+using LibraryDAL;
+using LibraryDAL.QeuryHelperClasses;
 namespace LibraryDAL
 {
-    public class LibraryService
+    public class LibraryService : ILibraryService
     {
+       
         public IEnumerable<Book> SelectAllBooks()
         {
             return from x in Data.Books
                    select x;
         }
-        public IEnumerable<Book> SelectAllBookNames()
+
+       
+        public IEnumerable<HelpClassInnerJoinClientSubscription> GetInnerJoin()
         {
-            return from x in Data.Books
-                   select x;
+            return from c in Data.Clients
+                   from s in Data.Subscriptions
+                   where c.Id == s.ClientId
+                   select new HelpClassInnerJoinClientSubscription {
+                       Name = c.FullName,
+                       DateOfIssue = s.DateOfIssue,
+                       ExpectedReturnDate = s.ExpectedReturnDate,
+                       RentalPrice = s.RentalPrice
+                   };
+
         }
-        public IEnumerable<dynamic> SelectAllStudentClients()
+        public IEnumerable<HelpClassFindClientsByCategory> SelectClientsByCategory(Categories category = Categories.Student)
         {
             return from x in Data.Clients
-                   where x.Category == Library.enums.Categories.Student
-                   select new { Name = x.FullName, Category = x.Category};
+                   where x.Category == category
+                   select new HelpClassFindClientsByCategory { Name = x.FullName, Category = x.Category};
         } 
 
-        public Dictionary<string, List<Client>> GetAllClientsByBook()
+        public IEnumerable<Book> GetConcatBook()
         {
+            return (from b in Data.Books
+                    from s in Data.Subscriptions
+                    where b.Id == s.BookId && s.DateOfIssue >= DateTime.Now.AddMonths(-1)
+                    select b).Concat(from b in Data.Books
+                                     where b.CollateralValue >=23M
+                                     select b).Distinct().ToList();
 
-            return Data.Books
-                             .GroupJoin(Data.Clients
-                             .Join(Data.Subscriptions,
-                                    c => c.Id,
-                                    cb => cb.ClientId,
-                                    (c, cb) => new
-                                    {
-                                        BookId = cb.BookId,
-                                        ClientItem = c
-                                    }),
-                                b => b.Id,
-                                bc => bc.BookId,
-                                (b, books) => new
-                                {
-                                    BookName = b.Name,
-                                    books = books.Select(c => c.ClientItem).ToList()
-                                }).Where(c=>c.books.Count()!=0).ToDictionary(b => b.BookName, c => c.books);
-        }
+                }
         public Dictionary<string, List<Book>> GetAllBooksByClient()
         {
 
@@ -74,105 +76,95 @@ namespace LibraryDAL
             return Data.Books.Aggregate(0, (sum, a) => sum + a.Amount);
         }
 
-        public Dictionary<Genres, IEnumerable<Book>> GetBooksByGenres()
+        public IEnumerable<HelpClassGroupJoinBookGenre> GetBooksByGenres()
         {
-            var q = from b in Data.Books
-                    group b by b.Genre;
-            return q.ToDictionary(k => k.Key, v => v.Select(h => h));
+           
+            return Data.Genres.GroupJoin(Data.Books,  g => g.Id, b => b.GenreId,(b, g) =>
+               new HelpClassGroupJoinBookGenre
+               {
+                   Genre = b.pGenre,
+                   Books = g
+               }
+            );
         }
      
-       public IEnumerable<dynamic> GetBooksWithSpecificAmount(int amount)
+       public bool GetBoolAllBooksWithSpecificAmount(int amount = 5)
         {
-            var q  = from x in Data.Books
-                     where x.Amount >= amount
-                     select new { Name = x.Name, Amount = x.Amount};
-            return q;
+            
+            return Data.Books.All(b => b.Amount>=amount);
         }
-       public Dictionary<string, int> GetBooksOnHand()
+       public IEnumerable<Client> GetClientsWithSkipedIndex(int index = 4)
         {
-            return Data.Books
-                             .GroupJoin(Data.Clients
-                             .Join(Data.Subscriptions,
-                                    c => c.Id,
-                                    cb => cb.ClientId,
-                                    (c, cb) => new
-                                    {
-                                        BookId = cb.BookId,
-                                        ClientItem = c
-                                    }),
-                                b => b.Id,
-                                bc => bc.BookId,
-                                (b, books) => new
-                                {
-                                    BookName = b.Name,
-                                    books = books.Select(c => c.ClientItem).ToList()
-                                }).Where(x=>x.books.Count >0).ToDictionary(x => x.BookName, y => y.books.Count);
+            return Data.Clients.Skip(index);  
         }
-        public IEnumerable<dynamic> GetSortedOldestTakenBooks()
+        public IEnumerable<HelpClassSortedBooks> GetSortedOldestTakenBooks()
         {
             var res = from x in Data.Books
                       join y in Data.Subscriptions on x.Id equals y.BookId
-                      orderby y.RentPeriod.DateOfIssue.Year
-                      select new { Name = x.Name, DateOfIssue = y.RentPeriod.DateOfIssue };
+                      orderby y.DateOfIssue.Year
+                      select new HelpClassSortedBooks { Name = x.Name, DateOfIssue = y.DateOfIssue };
             return res;
                       
         }
-        public IEnumerable<dynamic> GetFullInfo()
-        {
-            var bookIdAndClients = from b in Data.Books
-                                  join s in Data.Subscriptions
-                                            on b.Id equals s.BookId
-                                  group b by s.ClientId into models
-                                  select new {ClientId = models.Key, Books = models };
-            return bookIdAndClients;
-        }
         
-        public decimal GetFullRentProfit()
+        
+        public decimal GetAvgRentProfit()
         {
             var res = from x in Data.Books
                       join y in Data.Subscriptions on x.Id equals y.BookId
-                      select x.RentCost.RentalPrice;
+                      select y.RentalPrice;
 
-            return res.Sum();
+            return res.Average();
         }
 
-        //TODO base method that get data in range 
-        public IEnumerable<dynamic> GetOverdueBooks()
+        
+        public IEnumerable<Book> GetRentedBooksInRange(int begin = -3, int end = 3)
         {
             var res = from x in Data.Books
                       join y in Data.Subscriptions on x.Id equals y.BookId
-                      where y.RentPeriod.ExpectedReturnDate < DateTime.Now
-                      select new { Name = x.Name, OverdueTime = DateTime.Now - y.RentPeriod.ExpectedReturnDate };
+                      where y.DateOfIssue >= DateTime.Now.AddMonths(begin) && y.DateOfIssue <= DateTime.Now.AddMonths(end) 
+                      select x;
             return res;
         }
-        public double GetPercentOfStudentClients()
+        public decimal GetPercentOfCategoryClients(Categories category = Categories.Student)
         {
             var res = from c in Data.Clients
-                      where c.Category == 0
+                      where c.Category == category
                       select c;
            if (res is null) return 0;
-            return (double)res.Count() / Data.Clients.Count() * 100;
+            return (decimal)res.Count() / Data.Clients.Count() * 100M;
         }
-        //GetAllBooksStartedWithStartChar(char a) 
-        public IEnumerable<string> GetAllBooksStartedWithE()
+       
+        public IEnumerable<string> GetAllBooksStartedWithChar(char a = 'Е')
         {
             return from b in Data.Books
-                   where b.Name[0] == 'Е'
+                   where b.Name[0] == a
                    select b.Name;
         }
    
-        public Dictionary<string, IEnumerable<Book>> GetBooksByAuthors()
+        public IEnumerable<HelpClassJoinBookAuthors> GetJoinBooksAuthors()
         {
-            var q = from b in Data.Books
-                    group b by b.Author;
-            return q.ToDictionary(k => k.Key, v => v.Select(h => h));
+            return Data.Co_Authors.Join(Data.Books,
+                empLv1 => empLv1.BookId,
+                addLv1 => addLv1.Id,
+                (empLv1, addLv1) => new { empLv1, addLv1 }
+                ).Join(
+                Data.Authors,
+                empLv2 => empLv2.empLv1.AuthorId,
+                deptLv2 => deptLv2.Id,
+                (empLv2, deptLv2) => new { empLv2, deptLv2 }
+                ).Select(c => new HelpClassJoinBookAuthors
+                {
+                    BookName = c.empLv2.addLv1.Name,
+                    Author = c.deptLv2.Name
+                }).ToList();
         }
       
-       public IEnumerable<Subscription> GetActiveSubscriptions()
+       public IEnumerable<HelpClassDecart> GetDecartMultiply()
         {
-            return from s in Data.Subscriptions
-                   where s.IsActive == true
-                   select s;
+            return from b in Data.Books
+                   from c in Data.Subscriptions
+                   select new HelpClassDecart { SubscriptionId = c.Id, Name = b.Name, DateOfIssue = c.DateOfIssue, ExpectedReturnDate = c.ExpectedReturnDate, RentalPrice = c.RentalPrice };
         }
 
         public IEnumerable<Client> GetClientsWithOutRent()
@@ -181,37 +173,25 @@ namespace LibraryDAL
                    where !(from s in Data.Subscriptions select s.ClientId).Contains(c.Id)
                    select c;
         }
-        public IEnumerable<Book> GetBooksWithHihgerRentPrice()
+        public IEnumerable<HelpClassBooksWithHigher> GetBooksWithHihgerRentPrice(decimal limit = 47.55M)
         {
             return from b in Data.Books
-                   where b.RentCost.RentalPrice >= 47.55M
-                   select b;
+                   from s in Data.Subscriptions
+                   where s.RentalPrice >= limit
+                   select new HelpClassBooksWithHigher { Name = b.Name, RentPrice = s.RentalPrice};
 
         }
 
-        public decimal GetAverageCollateralValue()
+        public decimal GetMaxCollateralValue()
         {
-            return Data.Books.Average(b => b.RentCost.CollateralValue);
+            return Data.Books.Max(b => b.CollateralValue);
         }
 
-        public string GetCityName(string input)
+        
+        public Client GetClientFirstHaveLuckyNumber(string number = "666")
         {
-            string[] words = input.Split(' ');
-            int index = Array.IndexOf(words, "місто");
-            if (index >= 0 && index < words.Length - 1)
-            {
-                return words[index + 1];
-            }
-            else
-            {
-                return null;
-            }
-        }
-        public IEnumerable<Client> GetClientsWithLuckyNumber()
-        {
-            return from c in Data.Clients
-                   where c.Phone.Contains("666")
-                   select c;
+            return Data.Clients.FirstOrDefault(c => c.Phone.Contains(number));
+            
         }
     }
 }

@@ -12,10 +12,10 @@ namespace Library
         //public Genres Genre { get; set; } // в окрему таблицю 
         public int Amount { get; set; } 
         public Guid GenreId { get; set; }
-
+        public decimal CollateralValue { get; set; }
         public override string ToString()
         {
-            return $"{Name}  {Amount}";
+            return $"{Name}  {Amount} {CollateralValue}";
         }
 
     }

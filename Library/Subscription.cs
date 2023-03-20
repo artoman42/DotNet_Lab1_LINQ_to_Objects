@@ -13,20 +13,22 @@ namespace Library
         public Guid BookId { get; set; }
         public DateTime DateOfIssue { get; set; }
         public DateTime ExpectedReturnDate { get; set; }
-        public bool IsActive { get; set; } // одне з двух
-        public decimal CollateralValue { get; set; }
-        public decimal RentalPrice { get {
-                int expectedDuration = (ExpectedReturnDate - DateOfIssue).Days;
-                decimal PricePerDay = 1.5M;
-                return PricePerDay * expectedDuration;
-
-            } }
-        public RentCost RentCost { get; } // інкапсулювати логіку встановлення 
-
        
+        
+        public decimal RentalPrice { get {
+              
+                    int expectedDuration = (ExpectedReturnDate - DateOfIssue).Days;
+                    decimal PricePerDay = 1.5M;
+                    return   PricePerDay * expectedDuration;
+                
+                
+            } }
+         
+
+        
         public override string ToString()
         {
-            return $"Взято {DateOfIssue}, очікувана дата повернення{ExpectedReturnDate} {IsActive}";
+            return $"Взято {DateOfIssue}, очікувана дата повернення{ExpectedReturnDate}, цiна прокату #{RentalPrice}";
         }
     }
 }

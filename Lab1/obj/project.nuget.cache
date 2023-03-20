@@ -1,8 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "Y4JCtd56+XLqgZk5tBHxYZ7ywSs93Veczb0C+lFnuhIG06sSze2ddGSA9orYS+LFnr2Oju/nOgFcV4fTDptYAA==",
+  "dgSpecHash": "2czrdbSx50I6r+XaaRANGm7VEfjk9mSsWG3Ar97ycQINT7kiiqk7ACtuHBs/spBk1kKqQgFod8raI2kkhnKOaA==",
   "success": true,
   "projectFilePath": "D:\\KPI\\.NET\\Lab1\\Lab1\\Lab1.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\artom\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\7.0.0\\microsoft.extensions.dependencyinjection.7.0.0.nupkg.sha512",
+    "C:\\Users\\artom\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\7.0.0\\microsoft.extensions.dependencyinjection.abstractions.7.0.0.nupkg.sha512"
+  ],
   "logs": []
 }

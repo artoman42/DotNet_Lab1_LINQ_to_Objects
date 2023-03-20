@@ -4,15 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Library
+namespace LibraryDAL.QeuryHelperClasses
 {
-    public class Author:Object<Author>
+    public class HelpClassSortedBooks
     {
         public string Name { get; set; }
-
-        public override string ToString()
-        {
-            return Name;
-        }
+        public DateTime DateOfIssue { get; set; }
     }
 }

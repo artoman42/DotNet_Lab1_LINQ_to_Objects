@@ -1,8 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "HEJAt8DY6+fuw1CxqfZwu3uFro4OqhaRTzLLa6PJCVmbDOd4PZ6OPq0sxjaLxl/bt0WXhOyU0GLNSwWA8zLhig==",
+  "dgSpecHash": "btd1K7in5oiPVBtmknbdVaROOm9+Pq+9deluBsJByoITmAcw9q8bTEFy5c/XUrbAX8z/2CJU+TgdkXHU9rYfHA==",
   "success": true,
   "projectFilePath": "D:\\KPI\\.NET\\Lab1\\LibraryDAL\\LibraryDAL.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\artom\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\7.0.0\\microsoft.extensions.dependencyinjection.7.0.0.nupkg.sha512",
+    "C:\\Users\\artom\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\7.0.0\\microsoft.extensions.dependencyinjection.abstractions.7.0.0.nupkg.sha512"
+  ],
   "logs": []
 }

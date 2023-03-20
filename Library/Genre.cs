@@ -10,5 +10,10 @@ namespace Library
     public class Genre:Object<Genre>
     {
         public Genres pGenre { get; set; }
+
+        public override string ToString()
+        {
+            return pGenre.ToString();
+        }
     }
 }

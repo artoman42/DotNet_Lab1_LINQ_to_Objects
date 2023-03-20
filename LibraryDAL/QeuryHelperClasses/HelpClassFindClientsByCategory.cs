@@ -3,16 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
-namespace Library
+using Library.enums;
+namespace LibraryDAL.QeuryHelperClasses
 {
-    public class Author:Object<Author>
+    public class HelpClassFindClientsByCategory
     {
         public string Name { get; set; }
-
-        public override string ToString()
-        {
-            return Name;
-        }
+        public Categories Category { get; set; }
     }
 }
