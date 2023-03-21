@@ -8,7 +8,7 @@ namespace Library
 {
     public class Co_Author:Object<Co_Author>
     {
-        public Guid BookId { get; set; }
-        public Guid AuthorId { get; set; }
+        public int BookId { get; set; }
+        public int AuthorId { get; set; }
     }
 }

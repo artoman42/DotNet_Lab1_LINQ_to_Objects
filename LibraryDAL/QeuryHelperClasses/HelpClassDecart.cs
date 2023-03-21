@@ -8,7 +8,7 @@ namespace LibraryDAL.QeuryHelperClasses
 {
     public class HelpClassDecart
     {
-        public Guid SubscriptionId { get; set; }
+        public int SubscriptionId { get; set; }
         public string Name { get; set; }
         public DateTime DateOfIssue { get; set; }
         public DateTime ExpectedReturnDate { get; set; }

@@ -23,7 +23,7 @@ namespace LibraryDAL
         ShowRentedBooksInRange,
         ShowPercentOfCategoryClients,
         ShowAllBooksStartedWithChar,
-        ShowJoinBooksAuthors,
+        ShowJoinBooksGenres,
         ShowDecartMultiply,
         ShowClientsWithOutRent,
         ShowBooksWithHigherPrice,

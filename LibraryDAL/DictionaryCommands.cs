@@ -163,13 +163,13 @@ namespace LibraryDAL
             }
             Console.WriteLine();
         }
-        public void ShowJoinBooksAuthors()
+        public void ShowJoinBooksGenres()
         {
-            var res = _libraryService.GetJoinBooksAuthors();
-            Console.WriteLine("15. Show Join books with authors");
+            var res = _libraryService.GetJoinBooksGenres();
+            Console.WriteLine("15. Show Join books with genres");
             foreach (var r in res)
             {
-                Console.WriteLine($"{r.BookName} {r.Author}");
+                Console.WriteLine($"{r.Name} {r.Genre}");
             }
             Console.WriteLine();
         }

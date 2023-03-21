@@ -50,7 +50,7 @@ namespace LibraryDAL
                     where b.Id == s.BookId && s.DateOfIssue >= DateTime.Now.AddMonths(-1)
                     select b).Concat(from b in _data.Books
                                      where b.CollateralValue >=23M
-                                     select b).Distinct().ToList();
+                                     select b).Distinct(new BookQualityComparer()).ToList();
 
                 }
         public Dictionary<string, List<Book>> GetAllBooksByClient()
@@ -146,9 +146,17 @@ namespace LibraryDAL
                    select b.Name;
         }
    
-        public IEnumerable<HelpClassJoinBookAuthors> GetJoinBooksAuthors()
+        public IEnumerable<HelpClassJoinBookGenres> GetJoinBooksGenres()
         {
-            return _data.Co_Authors.Join(_data.Books,
+            return _data.Books.Join(_data.Genres,
+                b => b.GenreId,
+                g => g.Id,
+                (b, g) => new HelpClassJoinBookGenres
+                {
+                    Name = b.Name,
+                    Genre = g.pGenre
+                });
+           /* return _data.Co_Authors.Join(_data.Books,
                 empLv1 => empLv1.BookId,
                 addLv1 => addLv1.Id,
                 (empLv1, addLv1) => new { empLv1, addLv1 }
@@ -161,7 +169,7 @@ namespace LibraryDAL
                 {
                     BookName = c.empLv2.addLv1.Name,
                     Author = c.deptLv2.Name
-                }).DefaultIfEmpty().ToList();
+                }).DefaultIfEmpty().ToList();*/
         }
       
        public IEnumerable<HelpClassDecart> GetDecartMultiply()
@@ -194,7 +202,9 @@ namespace LibraryDAL
         
         public Client GetClientFirstHaveLuckyNumber(string number = "666")
         {
-            return _data.Clients.FirstOrDefault(c => c.Phone.Contains(number));
+            return (from c in _data.Clients
+                    where c.Phone.Contains(number)
+                    select c).FirstOrDefault();
             
         }
     }

@@ -24,7 +24,7 @@ namespace LibraryDAL
         public IEnumerable<Book> GetRentedBooksInRange(int begin = -3, int end = 3);
         public decimal GetPercentOfCategoryClients(Categories category = Categories.Student);
         public IEnumerable<string> GetAllBooksStartedWithChar(char a = 'Е');
-        public IEnumerable<HelpClassJoinBookAuthors> GetJoinBooksAuthors();
+        public IEnumerable<HelpClassJoinBookGenres> GetJoinBooksGenres();
         public IEnumerable<HelpClassDecart> GetDecartMultiply();
         public IEnumerable<Client> GetClientsWithOutRent();
         public IEnumerable<HelpClassBooksWithHigher> GetBooksWithHihgerRentPrice(decimal limit = 47.55M);

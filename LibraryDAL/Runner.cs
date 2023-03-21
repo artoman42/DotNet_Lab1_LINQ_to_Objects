@@ -33,7 +33,7 @@ namespace LibraryDAL
                 { DictionaryCommandsEnum.ShowRentedBooksInRange, () => _dictionaryCommands.ShowRentedBooksInRange() },
                 { DictionaryCommandsEnum.ShowPercentOfCategoryClients, () => _dictionaryCommands.ShowPercentOfCategoryClients() },
                 { DictionaryCommandsEnum.ShowAllBooksStartedWithChar, () => _dictionaryCommands.ShowAllBooksStartedWithChar() },
-                { DictionaryCommandsEnum.ShowJoinBooksAuthors, () => _dictionaryCommands.ShowJoinBooksAuthors() },
+                { DictionaryCommandsEnum.ShowJoinBooksGenres, () => _dictionaryCommands.ShowJoinBooksGenres() },
                 { DictionaryCommandsEnum.ShowDecartMultiply, () => _dictionaryCommands.ShowDecartMultiply() },
                 { DictionaryCommandsEnum.ShowClientsWithOutRent, () => _dictionaryCommands.ShowClientsWithOutRent() },
                 { DictionaryCommandsEnum.ShowBooksWithHigherPrice, () => _dictionaryCommands.ShowBooksWithHigherPrice() },

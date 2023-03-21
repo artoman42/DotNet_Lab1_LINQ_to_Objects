@@ -23,7 +23,7 @@ namespace LibraryDAL
         public void ShowRentedBooksInRange();
         public void ShowPercentOfCategoryClients();
         public void ShowAllBooksStartedWithChar();
-        public void ShowJoinBooksAuthors();
+        public void ShowJoinBooksGenres();
         public void ShowDecartMultiply();
         public void ShowClientsWithOutRent();
         public void ShowBooksWithHigherPrice();

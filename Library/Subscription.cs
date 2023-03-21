@@ -9,8 +9,8 @@ namespace Library
     public class Subscription : Object<Subscription>
     {
         //
-        public Guid ClientId { get; set; }
-        public Guid BookId { get; set; }
+        public int ClientId { get; set; }
+        public int BookId { get; set; }
         public DateTime DateOfIssue { get; set; }
         public DateTime ExpectedReturnDate { get; set; }
        

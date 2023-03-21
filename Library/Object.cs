@@ -12,12 +12,9 @@ namespace Library
     public class Object<TKey>
     {
         //line 14 is the same as line 21-29
-        public Guid Id { get; set; }
+        public int Id { get; set; }
 
-        public Object()
-        {
-            Id = Guid.NewGuid();
-        }
+        
        
     }
 }
