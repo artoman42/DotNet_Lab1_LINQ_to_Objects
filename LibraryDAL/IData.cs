@@ -8,11 +8,11 @@ namespace LibraryDAL
 {
     public interface IData
     {
-        static List<Book> Books { get; }
-        static List<Client> Clients { get; }
-        static List<Genre> Genres { get; }
-        static List<Author> Authors { get; }
-        static List<Subscription> Subscriptions { get; }
-        static List<Co_Author> Co_Authors { get; }
+        IEnumerable<Book> Books { get; }
+        IEnumerable<Client> Clients { get; }
+        IEnumerable<Genre> Genres { get; }
+        IEnumerable<Author> Authors { get; }
+        IEnumerable<Subscription> Subscriptions { get; }
+        IEnumerable<Co_Author> Co_Authors { get; }
     }
 }

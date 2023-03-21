@@ -11,6 +11,7 @@ namespace LibraryDAL
     {
         public static IServiceCollection  AddServices(this IServiceCollection serviceDescriptors)
         {
+            serviceDescriptors.AddSingleton<IData, Data>();
             serviceDescriptors.AddTransient<ILibraryService, LibraryService>();
             serviceDescriptors.AddTransient<IDictionaryCommands, DictionaryCommands >();
             serviceDescriptors.AddTransient<IRunner, Runner>();

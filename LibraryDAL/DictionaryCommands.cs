@@ -201,7 +201,7 @@ namespace LibraryDAL
             Console.WriteLine($"18. Show books with rent price more than {LIMIT}");
             foreach (var b in books)
             {
-                Console.WriteLine(b.ToString());
+                Console.WriteLine($"{b.Name} {b.RentPrice}");
             }
             Console.WriteLine();
         }
